@@ -80,7 +80,7 @@ int main()
             }
             else if (pid == 0) {
                 HandleClient(client_fd);
-                usleep(500000);
+                usleep(5000);
                 close(server_fd);
                 close(client_fd);
                 exit(0);
