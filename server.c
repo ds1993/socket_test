@@ -76,10 +76,12 @@ int main()
             pid_t pid = fork();
             if (pid > 0) {
                 signal(SIGCHLD, SIG_IGN);
+                close(client_fd);
             }
             else if (pid == 0) {
-                close(server_fd);
                 HandleClient(client_fd);
+                usleep(500000);
+                close(server_fd);
                 close(client_fd);
                 exit(0);
             }
